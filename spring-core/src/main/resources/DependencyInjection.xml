@@ -1,0 +1,56 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="employeeService" class="com.baeldung.constructordi.service.EmployeeService">
+        <constructor-arg ref="employeeDAO"/>
+        <constructor-arg ref="paymentService"/>
+    </bean>
+
+    <bean id="employeeDAO" class="com.baeldung.constructordi.service.EmployeeDAO">
+        <constructor-arg>
+            <list>
+                <ref bean="emp1"/>
+                <ref bean="emp2"/>
+                <ref bean="emp3"/>
+                <ref bean="emp4"/>
+                <ref bean="emp5"/>
+                <ref bean="emp6"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="paymentService" class="com.baeldung.constructordi.service.PaymentService">
+        <constructor-arg index="0" value="Halifax"/>
+        <constructor-arg index="1" value="232321212"/>
+    </bean>
+
+    <bean id="emp1" class="com.baeldung.beanfactory.Employee">
+        <constructor-arg name="name" value="Michael"/>
+        <constructor-arg name="age" value="35"/>
+    </bean>
+
+    <bean id="emp2" class="com.baeldung.beanfactory.Employee">
+        <constructor-arg name="name" value="Alex"/>
+        <constructor-arg name="age" value="25"/>
+    </bean>
+    <bean id="emp3" class="com.baeldung.beanfactory.Employee">
+        <constructor-arg name="name" value="Alan"/>
+        <constructor-arg name="age" value="37"/>
+    </bean>
+    <bean id="emp4" class="com.baeldung.beanfactory.Employee">
+        <constructor-arg name="name" value="Gary"/>
+        <constructor-arg name="age" value="27"/>
+    </bean>
+    <bean id="emp5" class="com.baeldung.beanfactory.Employee">
+        <constructor-arg name="name" value="Catherine"/>
+        <constructor-arg name="age" value="26"/>
+    </bean>
+    <bean id="emp6" class="com.baeldung.beanfactory.Employee">
+        <property name="name" value="Darien"/>
+        <property name="age" value="45"/>
+    </bean>
+
+
+</beans>
